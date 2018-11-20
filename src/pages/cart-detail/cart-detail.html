@@ -1,0 +1,78 @@
+<!--
+  Generated template for the CartDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar style="opacity: 0.8" no-border-bottom color="primary" hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button icon-only clear small navPop>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style='text-align:center'>确认订单</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="bg-color">
+  <div style="height: 100%" (swipe)="swipeEvent($event)">
+    <ion-list class="top-list" style="margin: -1px 0 15px" bg-color="primary">
+      <button ion-item (click)="goAddress()" no-lines>
+        <div *ngIf="address.nickname">
+          <p>
+            <span style="font-size: 16px">收货人: {{address.nickname}}</span>
+            <span style="float: right;font-size: 16px">{{address.phone}}</span>
+          </p>
+          <p>收货地址: {{address.description}}</p>
+        </div>
+        <h3 *ngIf="!address.nickname" style="color: #2e2e2e;font-weight: bold">请先添加收货地址</h3>
+      </button>
+    </ion-list>
+    <ion-list style="margin: -1px 0 15px">
+      <ion-item class="item item-boder" *ngFor="let item of shopcart">
+        <ion-thumbnail item-left>
+          <img src="{{item.imgurl}}">
+        </ion-thumbnail>
+        <h2>{{item.description |slice:0:30}}</h2>
+        <table style="border: 0.55px solid #f8285c;font-size: 11px;color: #f8285c">七天退换</table>
+        <div style="color: #f8285c;font-size: 14px;margin: -1.5vh 8px 0 8px" item-right>¥{{item.price}}
+          <p item-end>x{{item.number}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-list style="margin: -1px 0 15px">
+      <button ion-item style="font-size: 14px;border: none">
+        配送方式
+        <span item-end>快递&nbsp;&nbsp;免邮</span>
+      </button>
+      <button ion-item style="font-size: 14px">
+        运费险
+        <span item-end>卖家送，确认收货前退货可赔</span>
+      </button>
+      <ion-item ion-item style="font-size: 14px;border: none">
+        买家留言&nbsp;:&nbsp;&nbsp;
+        <input type="text" placeholder="选填:填写内容已和卖家协商确认"/>
+      </ion-item>
+      <ion-item>
+      <span item-end style="font-size: 14px">
+        共{{totalNum}}件商品&nbsp;&nbsp;小计:&nbsp;&nbsp;<span style="color: red;font-size: 12px">¥&nbsp;<span
+        style="font-size: 16px">{{total |number:'0.0-2'}}</span></span>
+      </span>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-item>
+      <span item-end style="font-size: 14px">
+        共<span style="color: red">{{totalNum}}</span>件，合计&nbsp;:&nbsp;&nbsp;<span
+        style="color: red;font-size: 12px">¥&nbsp;<span
+        style="font-size: 16px">{{total |number:'0.0-2'}}</span></span>
+      </span>
+    <button item-end midium fixed ion-button (click)="saveOrder()">
+      提交订单
+    </button>
+  </ion-item>
+</ion-footer>

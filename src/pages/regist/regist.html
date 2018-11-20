@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar style="opacity: 0.5" no-border-bottom color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style='text-align:center'>注册</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="login-content" padding>
+  <div>
+    <form [formGroup]="registForm" (ngSubmit)="register(registForm.value)" novalidate>
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item [class.error]="!username.valid && username.touched">
+              <ion-input type="tel" placeholder="请输入手机号" value="" [formControl]="username" clearInput=true
+                         [ngModel]="username"></ion-input>
+            </ion-item>
+            <ion-item [class.error]="!nickname.valid && nickname.touched" *ngIf="username.value">
+              <ion-input type="text" placeholder="昵称" value="" [formControl]="nickname" clearInput=true
+                         [ngModel]="nickname"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label style="color: rgb(155,155,155);">性别</ion-label>
+              <ion-select name="" [formControl]="sexs" [(ngModel)]="sex" interface="popover">
+                <ion-option value="男">男</ion-option>
+                <ion-option value="女">女</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-input type="password" placeholder="请输入密码" value="" [formControl]="password"
+                         clearInput=true></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="password" placeholder="请确认密码" value="" [formControl]="requirePassword"
+                         clearInput=true></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="text" placeholder="验证码" value="" [formControl]="verification"
+                         clearInput=true></ion-input>
+              <button ion-button outline item-end (click)="interVal()" class="verify-btn"
+                      [disabled]="isClick">
+                {{time==null?'获取验证码':time}}
+              </button>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit"
+                  [disabled]="!registForm.valid  || password.value !==requirePassword.value">
+            注册
+          </button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,48 @@
+page-cart-detail {
+  ion-list ion-item input {
+    font-size: 14px;
+    width: 60%;
+    border: none;
+  }
+  ion-list button span {
+    font-size: 14px;
+  }
+  ion-list button .item-inner {
+    border-bottom: 0.55px solid #c8c7cc;
+  }
+  .bg-color {
+    background: #efefef;
+  }
+  .footer .item .item-inner {
+    padding-right: 0;
+  }
+  .footer .item-inner button {
+    height: 100%;
+    margin: 0 0 0 8px;
+    padding: 0 2em;
+    border-radius: 0;
+  }
+  .item h1,
+  .item h2,
+  .item h3,
+  .item h4,
+  .item h5,
+  .item h6,
+  .item p,
+  .item-content,
+  .item-content h1,
+  .item-content h2,
+  .item-content h3,
+  .item-content h4,
+  .item-content h5,
+  .item-content h6,
+  .item-content p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    font-size: 14px;
+    font-family: "黑体-简";
+    font-weight: 300;
+    color: #808080;
+  }
+}

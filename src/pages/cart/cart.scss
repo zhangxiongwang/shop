@@ -1,0 +1,75 @@
+page-cart {
+  .bg-color {
+    background: #efefef;
+  }
+  .footer .item .item-inner {
+    padding-right: 0;
+  }
+  .footer .item-inner button {
+    height: 100%;
+    margin: 0 0 0 8px;
+    padding: 0 2em;
+    border-radius: 0;
+  }
+  .item h1,
+  .item h2,
+  .item h3,
+  .item h4,
+  .item h5,
+  .item h6,
+  .item p,
+  .item-content,
+  .item-content h1,
+  .item-content h2,
+  .item-content h3,
+  .item-content h4,
+  .item-content h5,
+  .item-content h6,
+  .item-content p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    font-size: 12px;
+    font-family: "黑体-简";
+    font-weight: 300;
+    color: #808080;
+  }
+  .item-boder {
+    border-bottom: 0.55px solid rgba(200, 199, 204, 0.1);
+    border-top: none;
+  }
+  .item-boder div {
+    border: none;
+  }
+  .number-input {
+    width: 40px;
+    border: 0.1px solid rgba(200, 199, 204, 0.5);
+    /* margin-top: 5px; */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(200, 199, 204, 0.5);
+  }
+  .list-ios .item-block .item-inner {
+    border: none;
+  }
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+  .towLine {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .btn {
+    margin: 0 !important;
+    padding: 5px !important;
+    margin-top: -8px !important;
+    height: inherit !important;
+  }
+}
+

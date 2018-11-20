@@ -1,5 +1,8 @@
 {
   "name": "familyEducation",
-  "app_id": "",
-  "type": "ionic-angular"
+  "app_id": "0720e15a",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

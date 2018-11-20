@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar style="opacity: 0.5;height: 44px" no-border-bottom color="primary">
+    <ion-title>登录</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="login-content" padding>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-67 (press)="changeAdress()">
+      <img src="assets/person.jpg"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <div>
+    <form [formGroup]="loginForm" novalidate>
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item [class.error]="!username.valid && username.touched">
+              <ion-input type="tel" placeholder="手机号" value="{{user}}" [formControl]="username"
+                         clearInput=true></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="password" placeholder="请输入密码" value="{{psw}}" [formControl]="password"
+                         clearInput=true></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full [disabled]="!loginForm.valid" (click)="logIn(loginForm.value)">登录</button>
+          <button ion-button class="register-btn" block clear (click)="regist()">注册</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </div>
+</ion-content>

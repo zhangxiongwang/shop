@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar style="opacity: 0.8;height: 44px" no-border-bottom color="primary" hideBackButton="true">
+    <ion-buttons left *ngIf="showBack ==true">
+      <button ion-button icon-only clear small navPop>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style='text-align:center'>购物车</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+  <ion-list style="height: 100%">
+    <ion-item-sliding class="item item-boder" *ngFor="let item of shopcart,let products_index = index">
+      <ion-item>
+        <ion-label class="flex">
+          <ion-thumbnail item-left>
+            <img src="{{item.imgurl}}">
+          </ion-thumbnail>
+          <div>
+            <h2 class="towLine">{{item.description}}</h2>
+            <div class="flex">
+              <p style="color: #f8285c;font-size: 18px">¥{{item.price}}</p>
+              <div style="position: absolute;right: 10px;">
+                <button ion-button clear item-end class="btn"
+                        (click)="increment(products_index)">
+                  <ion-icon style=" font-size: 20px;" name="ios-add-outline" isActive="true"></ion-icon>
+                </button>
+                <input class="number-input" type="text" [(ngModel)]="item.number"/>
+                <button ion-button clear item-end class="btn"
+                        (click)="decrement(products_index)" [disabled]="item.number == 1">
+                  <ion-icon style=" font-size: 20px;" name="ios-remove-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ion-label>
+        <ion-checkbox color="primary" style="opacity: 0.8" [(ngModel)]="item.checked"
+                      (click)="choose(item)"></ion-checkbox>
+      </ion-item>
+
+      <ion-item-options>
+        <button primary style="background:#f8285c;color: white" (click)="remove(products_index)">删除</button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <img *ngIf="shopcart.length == 0" src="assets/empty.png" style="width: 100%;height: 70%">
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-item *ngIf="shopcart.length >0">
+      <span item-end style="font-size: 14px">
+        总价&nbsp;:&nbsp;&nbsp;<span
+        style="color: red;font-size: 12px">¥&nbsp;<span
+        style="font-size: 16px">{{total |number:'0.0-2'}}</span></span>
+      </span>
+    <button item-end midium fixed ion-button [disabled]="total == 0" (click)="checkout()">
+      结算
+      <ion-badge>({{badge}})</ion-badge>
+    </button>
+  </ion-item>
+</ion-footer>

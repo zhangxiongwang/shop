@@ -1,0 +1,44 @@
+page-order {
+  .bg-color{
+    background: #efefef;
+  }
+  ion-list button span {
+    font-size: 14px;
+  }
+  ion-list button .item-inner {
+    border-bottom: 0.55px solid #c8c7cc;
+  }
+  .bg-color {
+    background: #efefef;
+  }
+  .item h1,
+  .item h2,
+  .item h3,
+  .item h4,
+  .item h5,
+  .item h6,
+  .item p,
+  .item-content,
+  .item-content h1,
+  .item-content h2,
+  .item-content h3,
+  .item-content h4,
+  .item-content h5,
+  .item-content h6,
+  .item-content p {
+    white-space: normal;
+    font-size: 14px;
+    font-family: "黑体-简";
+    font-weight: 300;
+    color: #808080;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  ion-thumbnail img{
+    width: 70px;
+    height: 70px;
+  }
+}

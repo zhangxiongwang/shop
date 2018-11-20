@@ -1,11 +1,50 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar style="opacity: 0.8" no-border-bottom color="primary">
     <ion-title>
-      About
+      个人中心
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="bg-color">
+  <ion-list class="top-list" style="margin: -1px 0 10px" no-lines>
+    <button *ngIf="userInfo" ion-item (click)="goUser()" class="noBorder">
+      <ion-avatar item-left>
+        <img src="{{imgurl}}">
+      </ion-avatar>
+      <h2>{{userInfo.nickname}}</h2>
+      <p>{{username}}</p>
+    </button>
+  </ion-list>
+  <ion-list style="margin: -1px 0 10px" no-lines>
+    <button ion-item (click)="ToAddress()">
+      我的收货地址
+    </button>
+    <ion-item ion-item *ngIf="products.length >0" class="noBorder mt-5">
+      猜你喜欢
+      <div style="display: flex;align-items: center;height: 75px;margin: 5px 0">
+        <img *ngFor="let p of products, let p_index =index" [src]="p.picturl"
+             style="border: 2px solid #f0f0f0;width: calc(25% - 10px)" [ngStyle]="{'margin-left':p_index>0?'10px':0}"
+             (click)="goDetails(p)">
+      </div>
+    </ion-item>
+    <button ion-item (click)="goOrder()" class="noBorder">
+      我的订单
+    </button>
+  </ion-list>
+  <ion-list no-lines>
+    <button ion-item>
+      版本号
+      <span item-end>V1.0</span>
+    </button>
+    <button ion-item class="noBorder">
+      关于
+    </button>
+  </ion-list>
+  <div class="btn">
+    <button ion-button block (click)="logOut()">
+      退出登录
+    </button>
+  </div>
 
 </ion-content>

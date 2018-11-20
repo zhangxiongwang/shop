@@ -1,0 +1,40 @@
+<!--
+  Generated template for the AddressPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar style="opacity: 0.8" no-border-bottom color="primary" hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button icon-only clear small navPop>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style='text-align:center'>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+  <ion-list style="margin: -1px 0 15px;height: 100%" radio-group no-lines (swipe)="swipeEvent($event)">
+    <ion-item style="border-top: none" *ngFor="let address of addresses,let add_index = index">
+      <ion-label style="white-space: normal">
+        <p>
+          <span style="font-size: 16px">{{address.nickname}}</span>
+          <span style="float: right;font-size: 16px">{{address.phone}}</span>
+        </p>
+        <p style="font-size: 12px;">
+          <span>{{address.description}}</span>
+          <button *ngIf="!isChoose" class="btn" (click)="delAddress(address.id)">删除</button>
+          <button *ngIf="!isChoose" class="btn" style="margin-right: 10px" (click)="editAddress(address)">编辑
+          </button>
+        </p>
+      </ion-label>
+      <ion-radio *ngIf="isChoose" class="radio" checked="{{address.defult}}" value="{{add_index}}"
+                 (click)="updateAddress(address)"></ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <button ion-button primary (click)="newAddress()" block>新增收货地址</button>
+</ion-footer>

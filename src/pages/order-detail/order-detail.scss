@@ -1,0 +1,48 @@
+page-order-detail {
+  .bg-color {
+    background: #efefef;
+  }
+  .price {
+    font-size: 10px !important;
+  }
+  .price span {
+    float: right;
+  }
+  .shop .item-inner {
+    border: none !important;
+  }
+  .towLine {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .item h1,
+  .item h2,
+  .item h3,
+  .item h4,
+  .item h5,
+  .item h6,
+  .item p,
+  .item-content,
+  .item-content h1,
+  .item-content h2,
+  .item-content h3,
+  .item-content h4,
+  .item-content h5,
+  .item-content h6,
+  .item-content p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    font-size: 14px;
+    font-family: "黑体-简";
+    font-weight: 300;
+    color: #808080;
+  }
+  .topline .item-inner {
+    border-top: 0.55px solid #f0f0f0 !important;
+    border-bottom: none !important;
+  }
+}

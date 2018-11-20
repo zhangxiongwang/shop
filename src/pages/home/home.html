@@ -1,17 +1,39 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar style="opacity: 0.8" color="primary">
+    <form>
+      <ion-searchbar placeholder="搜索"
+                     [(ngModel)]="mySearch"
+                     name="search"
+                     [showCancelButton]="true"
+                     [cancelButtonText]="'取消'"
+                     (ionInput)="onInput($event)"
+                     (ionCancel)="onCancel($event)"
+                     (ionClear)="onClear($event)">
+      </ion-searchbar>
+      <button style="position: absolute;margin-left: -100px" (click)="goSearch()"></button>
+    </form>
   </ion-navbar>
 </ion-header>
+<ion-content fullscreen>
+  <ion-slides *ngIf="len>=1" pager autoplay="2000" speed="600" loop="true" autoplayDisableOnInteration="true">
+    <ion-slide *ngFor="let item of slides" (click)="goDetails(item)">
+      <img class="ionimg" src="{{item.picturl}}" alt='图片加载中'/>
+      <div class="cover"></div>
+      <span class="title">{{item.title}}</span>
+    </ion-slide>
+  </ion-slides>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div class="categories">
+    <ion-grid>
+      <ion-row wrap>
+        <ion-col text-center tappable col-3 *ngFor="let c of categories" (click)="goProductList(c)">
+          <i class="iconfont {{c.icon}} icon"></i>
+          <!--<ion-icon name="cart"></ion-icon>-->
+          <span class="title">{{c.favoritestitle}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-item-divider class="t-header" color="light"> 年会礼服2017年新款</ion-item-divider>
+  <ion-products [products]="products"></ion-products>
 </ion-content>

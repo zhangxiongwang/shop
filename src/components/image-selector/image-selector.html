@@ -1,0 +1,12 @@
+<ion-row align-items-center>
+  <ion-col col-3 align-self-center *ngFor="let item of images, let i = index">
+    <ion-thumbnail tappable (click)="onViewImages(i)">
+      <img src="{{item?.originPath}}" class="auto-image" [style.height]="width"/>
+    </ion-thumbnail>
+  </ion-col>
+  <ion-col col-3 align-self-center>
+    <ion-thumbnail *ngIf="images && images.length<max && canAdd" tappable (click)="onAddImage()">
+      <img #addImage src="assets/imgs/add.png" class="auto-image"/>
+    </ion-thumbnail>
+  </ion-col>
+</ion-row>

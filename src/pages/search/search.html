@@ -1,0 +1,56 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar style="opacity: 0.8" color="primary" hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button icon-only clear small navPop>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <form>
+      <ion-searchbar placeholder="搜索" [(ngModel)]="mySearch"
+                     name="search"
+                     [showCancelButton]="true"
+                     [cancelButtonText]="'取消'"
+                     (ionInput)="onInput($event)"
+                     (ionCancel)="onCancel($event)"
+                     (ionClear)="onClear($event)">
+      </ion-searchbar>
+      <button (click)="setId()" style="position: absolute;margin-left: -100px"></button>
+    </form>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="checkmark-circled" refreshingSpinner="circles"
+                           refreshingText="下拉刷新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row justify-content-start>
+      <ion-col col-2 (click)="defult()" [ngClass]="{'choose':id == null&&desc == null&&asc==null}">
+        综合
+      </ion-col>
+      <ion-col (click)="priceDesc()" [ngClass]="{'choose':desc!=null}">
+        价格由高到低
+      </ion-col>
+      <ion-col (click)="priceAsc()" [ngClass]="{'choose':asc!=null}">
+        价格由低到高
+      </ion-col>
+      <ion-col col-3 (click)="idDesc()" [ngClass]="{'choose':id!=null}">
+        新品优先
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-products [products]="values.content"></ion-products>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="下拉加载更多...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
